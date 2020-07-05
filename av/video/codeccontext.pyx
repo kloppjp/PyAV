@@ -159,3 +159,18 @@ cdef class VideoCodecContext(CodecContext):
     property coded_height:
         def __get__(self):
             return self.ptr.coded_height
+
+    property global_quality:
+        def __get__(self):
+            return self.ptr.global_quality
+
+        def __set__(self, value):
+            self.ptr.global_quality = value * 118  # This is FF_QP2LAMBDA
+
+    property compression_level:
+        def __get__(self):
+            return self.ptr.compression_level
+
+        def __set__(self, value):
+            self.ptr.compression_level = value
+
